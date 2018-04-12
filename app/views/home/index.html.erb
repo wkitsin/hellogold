@@ -1,0 +1,21 @@
+<% if current_user.role == 'admin' %>
+  <% @transactions.each do |i| %>
+    Name:
+    <%= i.name %>
+    <br>
+    Type:
+    <%= i.type %>
+    <br>
+    Asset:
+    <%= i.asset %>
+    <br>
+    Amount:
+    <%= i.amount %>
+    <%= button_to "delete", {:controller => :transactions,
+      :action => 'destroy', :id => i.id }, :method => :delete %>
+    <br>
+    <br>
+  <% end %>
+<% else %>
+  <p>hi user</p>
+<% end %>
